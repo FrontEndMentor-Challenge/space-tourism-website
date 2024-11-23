@@ -1,0 +1,172 @@
+/* tekno */
+.technology-background {
+    background: url('../technology/background-technology-desktop.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: 0.10s ease-in-out;
+}
+
+.title-technology {
+    align-items: center;
+    padding-left: 10%;
+    padding-bottom: 0%;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.title-technology h1 {
+    font-family: 'BarlowCondensed-Medium';
+}
+.title-technology h1 b{
+    font-family:'BarlowCondensed-Bold';
+    color: rgba(193, 183, 183, 0.526);
+}
+.main-content-technology {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas: "left right"; /* Susunan default: kiri-kanan */
+}
+.main-content-technology .left-content {
+    grid-area: left;
+}
+.main-content-technologymain-content-technology .right-content {
+    grid-area: right;
+}
+
+.main-content-technology .left-content{
+    display: grid;
+    margin-top: 15%;
+    grid-template-columns: 1fr 2fr; 
+    grid-template-areas: "left right";
+
+}
+.main-content-technology .left-content .content-technology {
+    padding-left: 7%;
+    grid-area: right;
+}
+.content-technology h1 {
+    font-family: 'Bellefair';
+    margin-bottom: 2%;
+    letter-spacing: 2%;
+    color: rgba(164, 166, 168, 0.727);
+}
+.content-technology h2 {
+    font-family: 'Bellefair';
+    margin-top: 0%;
+    padding-top: 0%;
+    font-size: 50px;
+    letter-spacing: 2%;
+    margin-bottom: 5%;
+}
+.content-technology p {
+    margin-top: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 2.0;
+    letter-spacing: 0.9px;
+    color: rgba(226, 222, 222, 0.961);
+}
+.main-content-technology .left-content .list-button-circle {
+    margin-left: 50%;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-area: left;
+}
+
+.main-content-technology .button-circle{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Bellefair";
+    width: 70px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    border: 1px rgba(255, 255, 255, 0.371) solid;
+    border-radius: 100%;
+    display: flex;
+    color: white;
+    margin: auto;
+    text-decoration: none;
+}
+.main-content-technology .button-circle.active {
+    background-color: white;
+    color: black;
+}
+.main-content-technology .button-circle:hover {
+    background-color: white;
+    color: black;
+}
+.main-content-technology .right-content .technology {
+    display: block;
+    right: 0%;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    padding-bottom: 10%;
+
+}
+.main-content-technology .right-content .mobile {
+    display: none;
+}
+@media (max-width:768px) {
+    .main-content-technology {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "right"
+            "left";
+    }
+    .main-content-technology .left-content{
+        grid-template-columns:  1fr;
+        grid-template-areas: 
+        "left" 
+        "right";
+    }
+    
+    .main-content-technology .left-content{
+        margin-top: 1%;
+
+    }
+    .main-content-technology .left-content {
+        text-align: center;
+    }
+    .main-content-technology .left-content .content-technology {
+        padding: 0 10%;
+    }
+    .main-content-technology .left-content .list-button-circle {
+        margin-left: 0%;
+        display: flex;
+        gap: 2%;
+    }
+    .main-content-technology .button-circle {
+        margin: 2px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .main-content-technology .right-content .technology{
+        position: relative;
+        width: 100%;   
+        padding-bottom: 4%;
+    }
+    .main-content-technology .right-content .desktop {
+        display: none;
+    }
+    .main-content-technology .right-content .mobile {
+        display: block;
+    }
+    
+}
+@media (max-width:650px) { 
+    .title-technology {
+        text-align: center;
+        padding-left: 0%;
+    }
+    .content-technology h1 {
+        font-size: 30px;
+    }
+    .content-technology h2 {
+        font-size: 35px;
+    }
+    .content-technology p {
+        font-size: 15px;
+    }
+}
+

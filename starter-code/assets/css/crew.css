@@ -1,0 +1,157 @@
+/* crew */
+
+.crew-background {
+    background:  url('../crew/background-crew-desktop.jpg') no-repeat center center fixed;
+    background-size:cover;
+    transition: 0.10s ease-in-out;
+}
+.title-crew {
+    align-items: center;
+    padding-left: 10%;
+    padding-bottom: 0%;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.title-crew h1 b{
+    font-family:'BarlowCondensed-Bold';
+    color: rgba(193, 183, 183, 0.526);
+}
+.title-crew h1 {
+    font-family: 'BarlowCondensed-Medium';
+}
+
+.main-content-crew {
+    display: grid;
+    gap: 20px;
+    margin-top: 0px;
+    grid-template-columns: 2fr 2fr;
+    padding-left: 100px;
+}
+.main-content-crew .left-content {
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 20%;
+}
+.main-content-crew .left-content .rank-crew {
+    padding-bottom: 0%;
+}
+
+.rank-crew h1 {
+    font-size: 25px;
+    font-family: 'Bellefair';
+    color: rgba(190, 190, 190, 0.652);   
+}
+.name-crew h2 {
+    font-size: 50px;
+    font-family: 'Bellefair';
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);   
+}
+.description-crew {
+    padding-right: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 2.0;
+    color: rgba(226, 222, 222, 0.961);
+}
+.main-content-crew .right-content {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+.main-content-crew .image-right-content {
+    display: block;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    bottom: 0; 
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.5));
+}
+.main-content-crew .right-content::after  {
+    content: "";
+    position: absolute;
+    top: 80%;
+    width: 100%;
+    height: 20%;
+    border: none;
+    background: linear-gradient(to top ,rgb(0, 0, 0), rgba(0, 0, 0, 0.005));
+    pointer-events: none;
+}
+  
+
+.main-content-crew .pagination {
+    padding-top: 20%;
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+}
+.main-content-crew .dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+.dot.inactive {
+    background-color: #555454;
+}
+@media (max-width:768px) {
+    .crew-background {
+        background:  url('../crew/background-crew-tablet.jpg') no-repeat center center fixed;
+    }
+    .main-content-crew {
+        gap: 20px;
+        grid-template-columns: 1fr;
+        padding: 0 20px; 
+        justify-items: center;
+
+    }
+    .main-content-crew .left-content {
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center; 
+        box-sizing: border-box;
+        padding-right: 10%;
+    }
+    .rank-crew h1{
+        font-size: 25px;
+        margin: 0%;
+    }
+    .name-crew h2 {
+        font-size: 40px;
+        margin-top: 4%;
+        margin-bottom: 7%;
+        text-align: center;
+    }
+    .description-crew {
+        padding-right: 0%;
+        text-align: center;
+    }
+    .main-content-crew .right-content {
+        text-align: center;
+    }
+    .main-content-crew .image-right-content {
+        position: relative;
+        width: 45%;
+        left: 50%; 
+        transform: translateX(-50%); 
+        text-align: center; 
+    }
+    .main-content-crew .right-content::after  {
+        right: 0%; 
+    }
+    .main-content-crew .pagination {
+        padding-top: 10%;
+    }
+}
+@media (max-width:650px) {
+    .title-crew {
+        text-align: center;
+        padding-left: 0%;
+    }
+}

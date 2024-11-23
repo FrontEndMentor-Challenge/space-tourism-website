@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/destination.css">
+  <link rel="stylesheet" href="./assets/css/crew.css">
+  <link rel="stylesheet" href="./assets/css/technology.css">
+  <title>Frontend Mentor | Space tourism website</title>
+</head>
+
+<body class="main-background">
+    <nav class="side-menu" id="sideMenu">
+      <div class="close-btn" id="closeBtn"></div>
+      <div class="menu-mobile">
+        <a href="#" data-page="home">
+          <div class="nav-number zero"><p><b>00</b> HOME</p></div>
+        </a>
+        <a href="#" data-page="destination"><div class="nav-number"><p><b>01</b> DESTINATION</p></div></a>
+        <a href="#" data-page="crew"><div class="nav-number"><p><b>02</b> CREW</p></div></a>
+        <a href="#" data-page="technology"><div class="nav-number"><p><b>03</b> TECHNOLOGY</p></div></a>
+      </div>
+    </nav>
+    <div class="container">
+      <header class="header">
+        <div class="background-logo">
+          <img src="./assets/shared/logo.svg" alt="site-logo" class="logo">
+        </div>
+        <div class="line"></div>
+        <div class="background-nav">
+          <nav class="nav">
+            <a href="#" data-page="home">
+              <div class="nav-number zero"><p><b>00</b> HOME</p></div>
+            </a>
+            <a href="#" data-page="destination"><div class="nav-number"><p><b>01</b> DESTINATION</p></div></a>
+            <a href="#" data-page="crew"><div class="nav-number"><p><b>02</b> CREW</p></div></a>
+            <a href="#" data-page="technology"><div class="nav-number"><p><b>03</b> TECHNOLOGY</p></div></a>
+          </nav>
+        </div>
+        <div class="hamburger" id="menuBtn">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </header>
+      <div id="bodyTarget">
+        <main class="main-content" id="main-content">
+          <div class="main-article">
+            <div class="main-text-article">
+              <h2>SO, YOU WANT TO TRAVEL TO</h2>
+              <h1>SPACE</h1>
+              <p>
+                Let’s face it; if you want to go to space, you might as well genuinely go to 
+                outer space and not hover kind of on the edge of it. Well sit back, and relax 
+                because we’ll give you a truly out of this world experience!
+              </p>
+            </div>
+          </div>
+          <div class="button">
+            <div class="explore-button">
+              EXPLORE
+            </div>
+            <div class="explore-button-hover">
+            </div>
+          </div>
+          
+        </main>
+      </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+</body>
+
+<script src="./assets/script/jquery-3.7.1.min.js"></script>
+<script src="./assets/script/main.js"></script>
+</html>
