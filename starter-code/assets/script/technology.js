@@ -1,3 +1,11 @@
+let names = []
+let descriptions = []
+let desktopImage = []
+let mobileImage = []
+let currentIndex2 = 0;
+let technologyData = [];
+let buttonCircle =[]
+
 async function loadDataTechnology() {
   try {
     const response = await fetch("./assets/data/data.json");
@@ -8,45 +16,59 @@ async function loadDataTechnology() {
     console.error('Error loading data:', error);
   }
 }
+function updateDOMReferencesTechnology() {
+  names = document.querySelector('.content-technology h2');
+  descriptions = document.querySelector('.content-technology p');
+  desktopImage = document.querySelector('.image-right-content.desktop');
+  mobileImage = document.querySelector('.image-right-content.mobile');
+  // console.log("Referensi DOM diperbarui");
+}
+function updateButtonCircle() {
+  buttonCircle = document.querySelectorAll(".button-circle");
+  // console.log("Elemen button-circle diperbarui", buttonCircle);
+}
 
-let names = document.querySelector('.content-technology h2');
-let descriptions = document.querySelector('.content-technology p');
-let desktopImage = document.querySelector('.image-right-content.desktop');
-let mobileImage = document.querySelector('.image-right-content.mobile');
-let currentIndex2 = 0;
-let technologyData = [];
+function attachButtonCircleEventListeners() {
+  buttonCircle.forEach((dot, index) => {
+      dot.removeEventListener("click", handleDotClickTechnology); // Hindari duplikasi
+      dot.addEventListener("click", handleDotClickTechnology.bind(null, index));
+  });
+}
 
+function handleDotClickTechnology(index) {
+  currentIndex = index; 
+  updateTechnologyData(index);
+}
 async function updateTechnologyData(index) {
+  updateDOMReferencesTechnology()
+  updateButtonCircle()
+  attachButtonCircleEventListeners()
   technologyData = await loadDataTechnology();
 
-  // Menambahkan kelas fade untuk transisi
-  addFadeClassesTechnology();
+  
+  addFadeClassestechnology();
 
   setTimeout(() => {
     const { name, images, description } = technologyData[index];
 
-    // Update konten
-    updateContentTechnology(name, description, images);
+    updateContenttechnology(name, description, images);
 
-    // Menambahkan kelas fade-active untuk transisi elemen
     addFadeActiveClassesTechnology();
 
-    // Menghapus kelas fade dan fade-active setelah transisi selesai
-    setTimeout(removeFadeClassesTechnology, 500); // Durasi yang sama dengan transisi
+    setTimeout(removeFadeClassesTechnology, 500); 
   }, 500);
 
-  // Update status button-circle
   updateButtonCircles(index);
 }
 
-function addFadeClassesTechnology() {
+function addFadeClassestechnology() {
   names.classList.add("fade");
   descriptions.classList.add("fade");
   desktopImage.classList.add("fade");
   mobileImage.classList.add("fade");
 }
 
-function updateContentTechnology(name, description, images) {
+function updateContenttechnology(name, description, images) {
   names.textContent = name.toUpperCase();
   descriptions.textContent = description;
   desktopImage.src = images['portrait'];
@@ -68,17 +90,22 @@ function removeFadeClassesTechnology() {
 }
 
 function updateButtonCircles(index) {
-  document.querySelectorAll(".button-circle").forEach((dot, idx) => {
+  buttonCircle.forEach((dot, idx) => {
     dot.classList.toggle("active", idx === index);
   });
 }
 
-function startAutoChangeTechnology() {
+function startAutoChange() {
   setInterval(() => {
     currentIndex2 = (currentIndex2 + 1) % technologyData.length;
-    console.log(currentIndex2);
     updateTechnologyData(currentIndex2);
   }, 4000);
 }
+buttonCircle.forEach((dot, index) => {
+  dot.addEventListener("click", async () => {
+      currentIndex2 = index; 
+      await updateTechnologyData(index); 
+  });
+});
 
-updateTechnologyData(currentIndex2).then(startAutoChangeTechnology);
+updateTechnologyData(currentIndex2).then(startAutoChange);

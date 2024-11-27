@@ -1,10 +1,27 @@
-let currentIndex = 0;
-let crewData = [];
-let rankElement = document.querySelector(".rank-crew h1");
-let nameElement = document.querySelector(".name-crew h2");
-let descElement = document.querySelector(".description-crew p");
-let imageElement = document.querySelector(".main-content-crew .right-content img");
 
+var crewData = [];
+let currentIndex = 0;
+
+let rankElement = []
+let nameElement = []
+let descElement = []
+let imageElement = []
+let dotElements = []; 
+
+function updateDotElementsCrew() {
+    dotElements = document.querySelectorAll(".pagination .dot");
+    // console.log("Elemen .dot diperbarui", dotElements);
+}
+function attachDotEventListenersCrew() {
+    dotElements.forEach((dot, index) => {
+        dot.removeEventListener("click", handleDotClickCrew); // Hindari duplikasi
+        dot.addEventListener("click", handleDotClickCrew.bind(null, index));
+    });
+}
+function handleDotClickCrew(index) {
+    currentIndex = index; 
+    updateCrewData(index);
+}
 async function loadDataCrew() {
     try {
         const response = await fetch("./assets/data/data.json");
@@ -15,27 +32,32 @@ async function loadDataCrew() {
         console.error('Error loading data:', error);
     }
 }
+function updateDOMReferencesCrew() {
+    rankElement = document.querySelector(".rank-crew h1");
+    nameElement = document.querySelector(".name-crew h2");
+    descElement = document.querySelector(".description-crew p");
+    imageElement = document.querySelector(".main-content-crew .right-content img");
+    // console.log("Referensi DOM diperbarui");
+}
 
 async function updateCrewData(index) {
+    updateDOMReferencesCrew()
+    updateDotElementsCrew()
+    attachDotEventListenersCrew()
     crewData = await loadDataCrew();
 
-    // Menambahkan kelas fade untuk transisi
     addFadeClassesCrew();
 
     setTimeout(() => {
         const { role, name, bio, images } = crewData[index];
 
-        // Update konten
         updateContentCrew(role, name, bio, images);
-
-        // Menambahkan kelas fade-active untuk transisi elemen
+        
         addFadeActiveClassesCrew();
-
-        // Menghapus kelas fade dan fade-active setelah transisi selesai
-        setTimeout(removeFadeClassesCrew, 500); // Durasi yang sama dengan transisi
+        
+        setTimeout(removeFadeClassesCrew, 500); 
     }, 500);
 
-    // Update status dot pada pagination
     updatePaginationDots(index);
 }
 
@@ -50,7 +72,7 @@ function updateContentCrew(role, name, bio, images) {
     rankElement.textContent = role.toUpperCase();
     nameElement.textContent = name.toUpperCase();
     descElement.textContent = bio;
-    imageElement.src = images.webp;
+    imageElement.src = images['webp'];
 }
 
 function addFadeActiveClassesCrew() {
@@ -68,24 +90,23 @@ function removeFadeClassesCrew() {
 }
 
 function updatePaginationDots(index) {
-    document.querySelectorAll(".pagination .dot").forEach((dot, idx) => {
+    dotElements.forEach((dot, idx) => {
         dot.classList.toggle("inactive", idx !== index);
     });
 }
 
-function startAutoChangeCrew() {
+function startAutoChange() {
     setInterval(() => {
-        currentIndex = (currentIndex + 1) % crewData.length; // Pergantian indeks, kembali ke awal jika melebihi panjang array
-        console.log(currentIndex);
-        updateCrewData(currentIndex); // Update konten berdasarkan indeks baru
-    }, 4000); // Ganti setiap detik
+        currentIndex = (currentIndex + 1) % crewData.length;
+        updateCrewData(currentIndex); 
+    }, 4000); 
 }
 
-document.querySelectorAll(".pagination .dot").forEach((dot, index) => {
+dotElements.forEach((dot, index) => {
     dot.addEventListener("click", async () => {
-        currentIndex = index; // Update indeks ke indeks yang dipilih
-        await updateCrewData(index); // Perbarui konten
+        currentIndex = index; 
+        await updateCrewData(index); 
     });
 });
 
-updateCrewData(currentIndex).then(startAutoChangeCrew);
+updateCrewData(currentIndex).then(startAutoChange);
