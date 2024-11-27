@@ -83,7 +83,7 @@ body.fade-out {
 }
 
 .background-nav {
-  background: rgba(116, 116, 116, 0.4);
+  background: rgba(242, 241, 241, 0.047);
   backdrop-filter: blur(9px); 
   width: 49%;
   display: flex;
